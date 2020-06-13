@@ -15,8 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse, HttpResponseRedirect
+
+
+
+def read_file(request):
+    f = open('.well-known/pki-validation/E51057ABC0998BDD1E63634DBD44DB0C.txt', 'r')
+    file_content = f.read()
+    f.close()
+    return HttpResponse(file_content, content_type="text/plain")
 
 urlpatterns = [
+    path('.well-known/pki-validation/E51057ABC0998BDD1E63634DBD44DB0C.txt', read_file),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('blog/', include('blog.urls')),
