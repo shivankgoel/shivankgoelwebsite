@@ -9,7 +9,7 @@ from django.db.models import Count
 
 def get_recent_ids(next_page_token = ''):
 	myparams = {
-	'key' : 'AIzaSyAQhP7M52pqmYLn3ZLu9UQ1FwwpUQzZg8s',
+	'key' : 'AIzaSyCODNQTCCNjEOQD4rq6Wrsm6yutO_oCx5M',
 	'part' : 'contentDetails,id',
 	'pageToken' : next_page_token,
 	'playlistId' : 'PLK5n_RNeFvWTkq1YNFGZIYuhUuqvFW6LY'
