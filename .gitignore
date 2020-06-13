@@ -1,7 +1,5 @@
 djangoenv/
-db.sqlite3
 __pychahe__/
-Staticfiles/
 .vscode/
 .env
 shivankgoel_com_key.txt
