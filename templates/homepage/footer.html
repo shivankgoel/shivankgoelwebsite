@@ -1,0 +1,64 @@
+ <div id="layoutDefault_footer">
+                <footer class="footer pt-10 pb-5 mt-auto bg-dark footer-dark">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="footer-brand">Shivank Goel</div>
+                                <div class="mb-3">Follow me on social media</div>
+                                {% include 'homepage/socialicons.html' %}
+
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="row">
+
+                                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                                        <div class="text-uppercase-expanded text-xs mb-4">About Me</div>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><a href="{% url 'index' %}#homepage_timeline">Timeline</a></li>
+                                            <li class="mb-2"><a href="{% url 'reading' %}">Reading</a></li>
+                                              <li class="mb-2"><a href="{% url 'contact' %}">Contact</a></li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                                        <div class="text-uppercase-expanded text-xs mb-4">Tech Interviews</div>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><a href="{% url 'index' %}#data_science_course">Data Science Course</a></li>
+
+                                            <li class="mb-2"><a href="{% url 'index' %}#youtubecoding">Coding Videos</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="text-uppercase-expanded text-xs mb-4">Blog</div>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><a href="{% url 'blogindex' %}">Overview</a></li>
+                                            <li class="mb-2"><a href="{% url 'all_articles' %}?page=1">All Articles</a></li>
+<!--                                            <li class="mb-2"><a href="javascript:void(0);">Terms and Conditions</a></li>-->
+<!--                                            <li><a href="javascript:void(0);">License</a></li>-->
+                                        </ul>
+                                    </div>
+                                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                                        <div class="text-uppercase-expanded text-xs mb-4">Talk Events</div>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><a href="{% url 'tech_pe_charcha' %}">Tech Pe Charcha</a></li>
+                                            <li class="mb-2"><a href="{% url 'publicspeaking' %}">Invite Me</a></li>
+<!--                                            <li class="mb-2"><a href="javascript:void(0);">Sections</a></li>-->
+<!--                                            <li class="mb-2"><a href="javascript:void(0);">Documentation</a></li>-->
+<!--                                            <li><a href="javascript:void(0);">Changelog</a></li>-->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-5" />
+                        <div class="row align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; Shivank Goel 2020</div>
+<!--                            <div class="col-md-6 text-md-right small">-->
+<!--                                <a href="javascript:void(0);">Privacy Policy</a>-->
+<!--                                &middot;-->
+<!--                                <a href="javascript:void(0);">Terms &amp; Conditions</a>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                </footer>
+            </div>

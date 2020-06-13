@@ -1,0 +1,29 @@
+
+
+    <div class="d-flex align-items-center justify-content-between">
+        <h6 class="mb-0">{{title}}</h6>
+        {% ifnotequal title 'All Articles' %}
+        <div>
+            <a class="text-arrow-icon small" href="{% url 'all_articles'  %}?page=1">All Articles<i data-feather="arrow-right"></i></a>
+        </div>
+        {% endifnotequal %}
+    </div>
+    <hr class="mb-4" />
+
+      {% for article in articles %}
+        <div class="media">
+            <div class="media-body">
+                <a class="text-dark" href="#!"><h5 class="mt-0">{{article.title}}</h5></a>
+                <p>
+                  {{article.content|safe|truncatewords:27}}
+                 </p>
+                <a class="text-arrow-icon small" href="{% url 'get_blog_article_slug' slug=article.slug %}">Read more<i data-feather="arrow-right"> </i></a>
+            </div>
+            <a href="#!"><img class="align-self-start rounded shadow media-img ml-4" src={{article.imageurl}} alt=""/></a>
+        </div>
+        <hr class="my-4" />
+       {% endfor %}
+
+        <hr class="my-4 d-lg-none" />
+
+    <!-- <hr class="my-4" /> -->

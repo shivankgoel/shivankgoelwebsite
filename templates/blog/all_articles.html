@@ -1,0 +1,89 @@
+{%extends 'homepage/base.html'%}
+
+
+{%block body%}
+
+
+{% include 'homepage/navbar.html' %}
+
+<header class="page-header page-header-dark bg-img-cover overlay overlay-50" style='background-image: url("https://cdn.pixabay.com/photo/2018/07/01/13/28/announcement-3509489_1280.jpg")'>
+  <div class="page-header-content py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10 text-center">
+          <div data-aos="fade-up">
+            <h1 class="page-header-title">My Blog Posts</h1>
+            <p class="page-header-text"></p>
+            <p class="page-header-text"></p>
+          </div>
+          <br />
+          <!-- <a class="btn btn-marketing rounded-pill mybtn button" data-aos="fade-up" data-aos-delay="100" href="{% url 'contact' %}">Be my guest!</a> -->
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- {% include 'homepage/roundbottom.html' %} -->
+</header>
+
+<section class="bg-light py-5" id="article_start">
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-7 col-xl-8">
+
+        {% include 'blog/basic.html' with articles=all_articles  title='All Articles' %}
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination pagination-blog justify-content-center">
+            {% if page != 1 %}
+            <li class="page-item">
+              {% else %}
+            <li class="page-item disabled">
+              {% endif %}
+              <a class="page-link" href="{% url 'all_articles'  %}?page={{prev_page}}#article_start" aria-label="Previous"><span aria-hidden="true">«</span></a>
+            </li>
+
+            {% if page != numpages %}
+            <li class="page-item">
+              {% else %}
+            <li class="page-item disabled">
+              {% endif %}
+              <a class="page-link" href="{% url 'all_articles'  %}?page={{next_page}}#article_start" aria-label="Next"><span aria-hidden="true">»</span></a>
+            </li>
+
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="col-lg-5 col-xl-4">
+        {% include 'blog/blogsidebar.html' with tags=tags %}
+
+      </div>
+
+    </div>
+
+    <div class="my-5">
+    <div class="text-center"><a class="btn btn-transparent-dark btn-marketing rounded-pill" href="{% url 'blogindex' %}">Back to Blog Overview</a></div>
+
+</div>
+
+  </div>
+
+
+
+  <div class="svg-border-rounded text-dark">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor">
+      <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+    </svg>
+  </div>
+
+</section>
+
+{% include 'homepage/footer.html' %}
+
+{% endblock %}

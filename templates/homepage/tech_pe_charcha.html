@@ -1,0 +1,76 @@
+{%extends 'homepage/base.html'%}
+
+
+{%block body%}
+
+
+{% load static %}
+{% static "homepage/img/images/tpc.png" as mainpic %}
+
+{% include 'homepage/navbar.html' %}
+
+<header class="page-header page-header-dark bg-img-cover overlay overlay-20" style='background-image: url("{{mainpic}}")'>
+  <div class="page-header-content py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10 text-center">
+          <div data-aos="fade-up">
+            <h1 class="page-header-title"></h1>
+            <p class="page-header-text"></p>
+              <p class="page-header-text"></p>
+          </div>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <a class="btn btn-marketing rounded-pill mybtn button" data-aos="fade-up" data-aos-delay="100" href="{% url 'contact' %}">Be my guest!</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  {% include 'homepage/roundbottom.html' %}
+</header>
+
+
+<section id="tpcevents" class="bg-white py-10">
+  <div class="container">
+
+    <div class="text-uppercase-expanded  mb-2">Tech Pe Charcha Episodes</div>
+    <hr class="mt-0 mb-5" />
+
+
+
+    {% for event in events%}
+    <div class="card mb-4">
+      <div class="card-body p-0">
+        <div class="row no-gutters">
+          <div class="col-lg-6 order-2 p-5">
+            <a class="text-dark" href="https://www.youtube.com/watch?v={{event.youtubelink}}" target='_blank'>
+              <h1>{{event.title}}</h1>
+              <h4>{{event.date}}</h4>
+            </a>
+            <p class='tpc_description'>{{event.description|safe}}</p>
+            <a class="text-arrow-icon small" href="https://www.youtube.com/watch?v={{event.youtubelink}}" target="_blank">Watch on Youtube<i data-feather="arrow-right"></i></a>
+          </div>
+          <!-- <div class="col-lg-6 align-self-stretch bg-img-cover d-none d-lg-flex" style='background-image: url("https://source.unsplash.com/npxXWgQ33ZQ/1200x800")'>
+
+          </div> -->
+          <div class="col-lg-6 order-1 align-self-stretch embed-responsive embed-responsive-16by9 overlay-50">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{event.youtubelink}}" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+
+  </div>
+  {% include 'homepage/slantbottom.html' with color='light' %}
+</section>
+
+
+
+
+{% include 'homepage/footer.html' %}
+
+{% endblock %}

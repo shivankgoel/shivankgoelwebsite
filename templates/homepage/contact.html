@@ -1,0 +1,75 @@
+{%extends 'homepage/base.html'%}
+
+
+{%block body%}
+
+
+{% load static %}
+{% static "homepage/img/images/6.jpg" as mainpic %}
+
+{% include 'homepage/navbar.html' %}
+
+<header class="page-header page-header-dark bg-gradient-primary-to-secondary">
+  <div class="page-header-content pt-10">
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h1 class="page-header-title mb-3">Contact Me</h1>
+          <p class="page-header-text">Have questions? Schedule appointments?<br /> I'm happy to help!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="svg-border-rounded text-light">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor">
+      <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+    </svg>
+  </div>
+</header>
+
+
+
+<section class="bg-light py-10">
+  <div class="container">
+
+    <div class="row justify-content-center">
+    </div>
+    <div class="row align-items-center mb-10">
+      <div class="col-md-6 text-center mb-5 mb-lg-0">
+        <div class="section-preheading">Message Me</div>
+        <a href="https://www.instagram.com/techlife_with_shivank/" target='_blank'>Start a chat!</a>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="section-preheading">Email Me</div>
+        <a href="#!">goelshivank12@gmail.com</a>
+      </div>
+    </div>
+
+
+    <form action="mailto:goelshivank12@gmail.com" method="POST" enctype="multipart/form-data" name="website_form">
+      <div class="form-row">
+        <div class="form-group col-md-6"><label class="text-dark" for="inputName">Full name</label>
+          <input class="form-control py-4" id="inputName" type="text" placeholder="Full name" />
+        </div>
+        <div class="form-group col-md-6"><label class="text-dark" for="inputEmail">Email</label>
+          <input class="form-control py-4" id="inputEmail" type="email" placeholder="name@example.com" />
+        </div>
+      </div>
+      <div class="form-group"><label class="text-dark" for="inputMessage">Message</label>
+        <textarea class="form-control py-3" id="inputMessage" type="text" placeholder="Enter your message..." rows="4"></textarea>
+      </div>
+      <div class="text-center"><button class="btn btn-primary btn-marketing mt-4" type="submit">Send</button></div>
+    </form>
+
+  </div>
+  <div class="svg-border-rounded text-dark">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor">
+      <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+    </svg>
+  </div>
+</section>
+
+
+{% include 'homepage/footer.html' %}
+
+{% endblock %}

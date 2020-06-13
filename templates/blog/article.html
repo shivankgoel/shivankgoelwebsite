@@ -1,0 +1,192 @@
+{%extends 'homepage/base.html'%}
+
+
+{%block body%}
+{% load static %}
+
+{% include 'homepage/navbar.html' %}
+{% load widget_tweaks %}
+
+<section class="bg-white py-10">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-8">
+
+
+        <div class="single-post">
+          <h1>{{object.title}}</h1>
+          <p class="lead">
+            {{object.subtitle}}
+          </p>
+
+
+
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="single-post-meta mr-4">
+              <img class="img-fluid single-post-meta-img blog_main_image" src="{% static "homepage/img/images/4.jpg" %}" />
+              <div class="single-post-meta-details">
+                <div class="single-post-meta-details-name">
+                  {% for author in object.authors.all %}
+                  <a href="{% url 'get_blog_author_slug' slug=author.slug %}">
+                    {{author}}
+                  </a>
+
+                  {% if author != object.authors.last %}
+                  <span>,</span>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="single-post-meta-details-date">{{object.createdAt}}</div>
+
+              </div>
+
+            </div>
+            <div class="single-post-meta-links">
+              <div class="col">
+                <div class="row">
+                  {% if already_liked %}
+                  <a href="#!" onclick="disLikeArticle({{object.pk}})"><i class="fas fa-heart fa-fw" style="color:#CD5C5C;"></i></a>
+                  {% elif authorized %}
+                        <a href="#!" onclick="likeArticle({{object.pk}})"><i class="far fa-heart fa-fw"></i></a>
+                    {% else %}
+                        <form class="" action="/blog/article/{{object.pk}}/like" method="post" id="heart-form">
+                        {% csrf_token %}
+                            <input type="hidden" name="next" value="/blog/article/{{object.pk}}">
+                           <a onclick="document.getElementById('heart-form').submit();"><i class="far fa-heart fa-fw"></i></a>
+                        </form>
+
+
+                  {% endif %}
+                  <a href="#comment_box"><i class="far fa-comment fa-fw"></i></a>
+                  <a href="#!"><i class="fas fa-share fa-fw"></i></a>
+
+                </div>
+                {% if object.likes.count %}
+                <div class="row my-extra-small-font">
+                  {{object.likes.count}} likes
+
+                </div>
+                {% endif %}
+
+              </div>
+
+
+            </div>
+          </div>
+
+
+          <p>
+            <div class="text-gray-600 my-extra-small-font">
+
+              {% for tag in object.tags.all %}
+
+              <a class="badge badge-marketing badge-primary-soft badge-pill text-primary mb-3" href="{% url 'get_blog_tag_slug' tag.slug %}">
+
+              #{{tag.name}}
+              </a>
+
+              {% endfor %}
+
+            </div>
+
+          </p>
+
+
+          <img class="img-fluid mb-2" src="{{object.imageurl}}" />
+          <div class="small text-gray-500 text-center">{{object.imagecaption}}</div>
+          <div class="single-post-text my-5">
+            <p>
+              {{object.content|safe}}
+            </p>
+            <hr class="my-5" />
+            <div class="text-center"><a class="btn btn-transparent-dark btn-marketing rounded-pill" href="{% url 'blogindex' %}">Back to Blog Overview</a></div>
+          </div>
+
+
+          <a class="badge badge-marketing badge-primary-soft badge-pill text-primary mb-3" href="#all_comments">
+          {{object.comments.count}} Comments
+          </a>
+
+
+          <div class="card" id="comment_box">
+            <form class="" action="/blog/comment/" method="post">
+                {% csrf_token %}
+                {% for field in comment_form %}
+                    <input type="hidden" name="article_pk" value={{object.pk}} />
+                    <input type="hidden" name="next" value="{{ request.path }}#comment_box">
+
+                    <label class="card-header text-gray-900" for="{{field.id_for_label}}" >Add Comment</label>
+                    <div class="card-body">
+                        {% if authorized %}
+                            {{field|attr:"rows:3"|add_class:"form-control mb-2"}}
+                        {% endif %}
+                        <!-- <textarea class="form-control mb-2" rows="4"></textarea> -->
+                        {% if authorized %}
+                        <button type="submit" class="btn btn-light btn-sm mr-2">Comment</button>
+                        {% else %}
+                        <a  href="{% url 'login' %}?next={{request.path}}#comment_box" class="btn btn-light btn-sm mr-2">Login to Comment</a>
+
+                        {% endif %}
+                        <!-- <button class="btn btn-light btn-sm mr-2"><i class="fas fa-paperclip mr-2"></i>Attach a File</button>
+                        <button class="btn btn-light btn-sm"><i class="fas fa-archive mr-2"></i>Mark as Resolved</button> -->
+                    </div>
+                {% endfor %}
+            </form>
+          </div>
+
+
+
+          <div class="card my-2" id="all_comments">
+              <div class="list-group list-group-flush">
+                {% for comment in object.comments.all %}
+                  <div class="list-group-item  py-4" href="#!">
+                      <div class="d-flex justify-content-between">
+                          <div class="mr-4 d-flex">
+                              <!-- <div class="icon-stack icon-stack bg-green-soft text-green flex-shrink-0 mr-4"><i data-feather="check"></i></div> -->
+                              <div>
+                                  <h6><b>{{comment.user.first_name}}</b></h6>
+                                  <h6 class="small text-gray-500">{{comment.createdAt}}</h6>
+
+                                  <p class="card-text">
+                                    {{comment.content|safe}}
+                                  </p>
+
+                                  {% if authorized and comment.user == request.user %}
+
+                                  <form class="" action="/blog/article/{{object.pk}}/comment/{{comment.pk}}/delete" method="post" id="delete-comment-form">
+                                  {% csrf_token %}
+                                      <input type="hidden" name="next" value="{{ request.path }}#comment_box">
+                                      <a onclick="document.getElementById('delete-comment-form').submit();" class="small text-gray-500">Delete <i class="far fa-trash-alt"></i></a>
+                                  </form>
+
+                                  {% endif %}
+
+                              </div>
+                          </div>
+                          <!-- <div class="small text-gray-400 flex-shrink-0 text-right">
+                              {{comment.createdAt}}
+                              <br />
+                              <div class="badge badge-green-soft badge-pill text-green">Approved</div>
+                          </div> -->
+                      </div>
+                    </div>
+                    <hr class="my-0"/>
+                  {%  endfor  %}
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="svg-border-rounded text-dark">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor">
+      <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+    </svg>
+  </div>
+</section>
+
+
+{% include 'homepage/footer.html' %}
+
+{% endblock %}

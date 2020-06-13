@@ -1,0 +1,107 @@
+{%extends 'homepage/base.html'%}
+
+
+{%block body%}
+
+{% include 'homepage/navbar.html' %}
+
+{% load static %}
+{% static "homepage/img/images/cornell1.jpg" as cornellpic %}
+{% static "homepage/img/images/iit5.jpg" as iitpic %}
+
+
+<header class="page-header page-header-dark bg-img-cover overlay overlay-80" style='background-image: url("https://source.unsplash.com/faEfWCdOKIg/1500x900")'>
+  <div class="page-header-content py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10 text-center">
+          <div data-aos="fade-up">
+            <h1 class="page-header-title">Academic</h1>
+            <p class="page-header-text">Places where I went school.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="svg-border-rounded text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor">
+      <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+    </svg>
+  </div>
+</header>
+
+
+<section class="bg-white py-10">
+  <div class="container">
+    <div class="text-uppercase-expanded small mb-2">Teaching Assistant</div>
+    <hr class="mt-0 mb-5" />
+
+    {%for tjob in teachingjobs %}
+    <div class="row mb-5">
+      <div class="col-lg-8">
+        <h4 class="mb-0"><a href="{{job.url}}">{{tjob.title}}</a> | {{tjob.location}}</h4>
+        <p class="lead">{{tjob.prof}}</p>
+        <p>{{tjob.description}}</p>
+      </div>
+      <div class="col-lg-4 text-lg-right">
+        <div class="text-gray-600 small">{{tjob.duration}}</div>
+      </div>
+    </div>
+    {% endfor %}
+
+
+  </div>
+  <div class="svg-border-angled text-light">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor">
+      <polygon points="0,100 100,0 100,100"></polygon>
+    </svg>
+  </div>
+</section>
+
+
+<section class="bg-light py-10">
+  <div class="container">
+    <div class="text-uppercase-expanded small mb-2">Education</div>
+            <hr class="mt-0 mb-5" />
+    {% for school in schools %}
+    <div class="row align-items-center justify-content-center mb-5">
+      <div class="col-md-9 col-lg-6 order-1 order-lg-0" data-aos="fade-right">
+        <div class=""><img class=" img-fluid shadow-lg rounded-lg my-img-left" src="{% static school.imgurl %}" /></div>
+      </div>
+      <div class="col-lg-6 order-0 order-lg-1 mb-5 mb-lg-0" data-aos="fade-left">
+        <div class="container">
+          <h4 class="mb-0"> {{school.schoolname}} </h4>
+          <p class="lead"> {{school.degreename}} <br>
+            <span class="text-gray-600 small">{{school.duration}}</span>
+          </p>
+          <p>
+            Relevant Coursework :
+            <ul>
+              {% for course in school.courseslist %}
+              <li>{{course}} </li>
+              {% endfor%}
+            </ul>
+
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+
+  </div>
+
+  <div class="svg-border-angled text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor">
+      <polygon points="0,100 100,0 100,100"></polygon>
+    </svg>
+  </div>
+
+
+</section>
+
+
+
+{% include 'homepage/footer.html' %}
+
+{% endblock %}

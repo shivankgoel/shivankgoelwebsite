@@ -1,0 +1,293 @@
+{%extends 'homepage/base.html'%}
+
+
+{%block body%}
+
+
+{% load static %}
+{% static "homepage/img/images/6.jpg" as mainpic %}
+
+{% include 'homepage/navbar.html' %}
+
+<header class="page-header page-header-dark bg-img-cover overlay overlay-60" style='background-image: url("{{mainpic}}")'>
+  <div class="page-header-content py-15">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-6 col-lg-8">
+          <h1 class="page-header-title">Shivank Goel</h1>
+          <p class="page-header-text mb-5">
+            Hi, my name is <span class="chalk-highlight">Shivank Goel.</span> I am a software engineer at
+            <span class="chalk-highlight">Amazon.</span>
+            I completed my master's degree from <span class="chalk-highlight">Cornell Johnson College of Business.</span>
+            Prior to that I earned a bachelor's degree in Computer Science from <span class="chalk-highlight">Indian Institute of Technology Delhi.</span>
+          </p>
+          <div class="header-social-icons">
+            {% include 'homepage/socialicons.html' %}
+          </div>
+
+          <!--                    <a class="mybtn btn-marketing rounded-pill btn-teal lift lift-sm" href="#!"><i class="fas fa-file-pdf mr-2"></i>Download Resume</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svg-border-angled text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor">
+      <polygon points="0,100 100,0 100,100"></polygon>
+    </svg>
+  </div>
+</header>
+
+
+<section id="homepage_timeline" class="bg-white py-10">
+  <div class="container my-card-hover">
+
+    <div class="text-uppercase-expanded  mb-2">Timeline</div>
+    <hr class="mt-0 mb-5" />
+
+    <div class="accordion accordion-faq mb-5" id="authAccordion">
+      {% for job in jobs%}
+      <div class="card accordion-faq-item">
+        <a class="card-header" id="authHeading-{{forloop.counter}}" data-toggle="collapse" data-target="#authCollapse-{{forloop.counter}}" aria-expanded="true" aria-controls="authCollapseOne" href="javascript:void(0);">
+          <div class="accordion-faq-item-heading">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3 col-sm-12">
+                  <img class=" img-fluid my-img-icon" src="{% static job.imgurl %}" />
+                </div>
+                <div class="col-md-5 col-sm-8">
+                  <div class="row">
+                    {{job.company}}
+                  </div>
+                  <div class="row text-gray-600">
+                    {{job.title}}
+                  </div>
+                  <div class="row text-gray-500 small">
+                    {{job.location}}
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="row text-gray-700 small justify-content-end">
+                    {{job.duration}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <i class="accordion-faq-item-heading-arrow" data-feather="chevron-down"></i> -->
+          </div>
+          <!-- <h5 class="mb-0 white-text text-uppercase font-thin">
+              <i class="fas fa-angle-down rotate-icon"></i>
+           </h5> -->
+          <!-- <i class="fas fa-angle-down rotate-icon accordion-faq-item-heading-arrow"></i> -->
+        </a>
+        <div class="collapse collapsed" id="authCollapse-{{forloop.counter}}" aria-labelledby="authHeading-{{forloop.counter}}" data-parent="#authAccordion">
+          <div class="card-body border-bottom">
+            <div class="container">
+              <ul>
+                {% for descitem in job.description %}
+                <li>{{descitem}}</li>
+
+                {% endfor %}
+
+              </ul>
+
+              {% ifequal job.company "Cornell University" %}
+              <div class="text-uppercase-expanded small mb-2">Research</div>
+              <ul>
+                {%for tjob in cornellresearch %}
+                {% include 'homepage/time_line_item.html' with item=tjob %}
+                {% endfor %}
+              </ul>
+
+              <div class="text-uppercase-expanded small mb-2">Teaching Assitantship</div>
+              <ul>
+                {%for tjob in teachingjobs %}
+                {% include 'homepage/time_line_item.html' with item=tjob %}
+                {% endfor %}
+              </ul>
+
+              {%  endifequal %}
+
+              {% ifequal job.company "Indian Institute of Technology Delhi" %}
+              <div class="text-uppercase-expanded small mb-2">Research</div>
+              <ul>
+                {%for tjob in iitresearch %}
+                {% include 'homepage/time_line_item.html' with item=tjob %}
+                {% endfor %}
+              </ul>
+
+              {%  endifequal %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+  {% include 'homepage/slantbottom.html' with color='light' %}
+</section>
+
+
+
+<section class="bg-light py-5">
+
+  <div class="container">
+
+    <div class="text-uppercase-expanded  mb-2">Blog</div>
+    <hr class="mt-0 mb-5" />
+
+    <p class="mb-5">
+      Here are some of the recent articles from my <span class="chalk-highlight-small">Blog.</span>
+      This is my safe heaven where I can be myself and ponder about stars, unicorns and everything else fancy.
+      Some of my favorite categories are Tech, Business, Health and Cooking.
+      Definitely check it out!
+    </p>
+
+    <div class="row">
+
+      <div class="col-lg-7 col-xl-8">
+        {% include 'blog/basic.html' with articles=latest_articles  title="Top Stories" %}
+      </div>
+      <div class="col-lg-5 col-xl-4">
+        {% include 'blog/blogsidebar.html' with tags=tags %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+  {% include 'homepage/slantbottom.html' with color='white' %}
+
+</section>
+
+
+<section class="bg-white py-5" id="data_science_course">
+  <div class="container z-1">
+    <div class="text-uppercase-expanded  mb-2">Data Science Interview Prep Course</div>
+    <hr class="mt-0 mb-5" />
+
+    <p class="mb-5">
+      I have put my heart and soul into preparing this course.
+      In this course, I cover <span class="chalk-highlight-small">Mathematics</span> behind ML algorithms in detail which other data science courses usually miss.
+      If you are preparing for an interview or want to learn data science in general you will definitely not regret buying this!
+    </p>
+
+    <div class="card mb-5" data-aos="fade-right">
+      <div class="row no-gutters">
+        <div class="col-md-6"><img class="img-fluid" src="{% static "homepage/img/images/dscourse.png"   %}" alt="..." /></div>
+        <div class="col-md-6">
+          <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
+            <h3 class="card-title font-weight-bold text-uppercase mb-2">Data Science Interview</h3>
+            <p class="card-text font-weight-light mb-4">Checkout my course on Udemy</p>
+            <a class="btn btn-outline-dark btn-marketing rounded-pill" href="https://www.udemy.com/course/datascienceinterview/?referralCode=3495F9F99BE91554F62E">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {% include 'homepage/slantbottom.html' with color='light' %}
+</section>
+
+
+<section class="bg-light py-10" id="youtubecoding">
+  <div class="container">
+    <div class="text-uppercase-expanded mb-2">Youtube Coding Videos</div>
+    <hr class="mt-0 mb-5" />
+    <p>
+      I share online videos related to algorithms and data structures on my <span class="chalk-highlight-small"><a href="https://www.youtube.com/techlifewithshivank" target="_blank">Youtube Channel.</a></span>. These are the recent coding videos
+      which I posted.
+      I always <i class="fas fa-heart"></i> hearing from you. If you wish me to add a specific video, write to me now.
+
+<br><br>
+      Please <span class="chalk-highlight-small">Subscribe</span> to my channel with the button below!
+      <div class="g-ytsubscribe" data-channelid="UCFG0U96t858GIjI4Ja3VezA" data-layout="default" data-count="default"></div>
+
+    </p>
+
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="4000">
+      <div class="carousel-inner">
+        {% for video_id in playlist_ids %}
+
+        {% if forloop.first %}
+        <div class="carousel-item active">
+          {% else %}
+          <div class="carousel-item">
+            {% endif %}
+            <div class="myvideopadding">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{video_id}}?rel=0" allowfullscreen></iframe>
+              </div>
+
+            </div>
+
+          </div>
+
+          {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      <!-- <div style="overflow: auto" class="pt-4">
+      <div class=" span12 row-fluid">
+        {% for video_id in playlist_ids %}
+        <div class="col-lg-4">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{video_id}}" allowfullscreen></iframe>
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+    </div> -->
+
+    </div>
+    {% include 'homepage/slantbottom.html' with color='white' %}
+
+</section>
+
+
+<!--
+<section class="bg-white py-10">
+  <div class="container">
+    <div class="text-uppercase-expanded small mb-2">Instagram</div>
+    <hr class="mt-0 mb-5" />
+    <p>I share interview questions and other tech related stuff on my <span class="chalk-highlight-small">TechLife With Shivank</span> account.
+      I also have a separate personal account where I share cooking, travel and my other adventures!
+
+    </p>
+
+    <div style="overflow: auto" class="pt-4 ">
+      <div class=" span12 row-fluid">
+        {% for shortcode in shortcodes %}
+        <div class="col-lg-4 col-md-6">
+          <blockquote class="instagram-media my-insta-post" data-instgrm-permalink="https://www.instagram.com/p/{{shortcode}}" data-instgrm-version="12" />
+
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+
+
+
+  </div>
+
+</section> -->
+
+
+{% include 'homepage/footer.html' %}
+
+{% endblock %}

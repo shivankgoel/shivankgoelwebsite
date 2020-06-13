@@ -1,0 +1,72 @@
+{%extends 'homepage/base.html'%}
+
+
+{%block body%}
+
+<!-- {% load static %}
+{% static "homepage/img/images/tpc.png" as mainpic %} -->
+
+{% include 'homepage/navbar.html' %}
+{% load widget_tweaks %}
+
+<section>
+
+  <div class="container">
+
+    <form action="" method="POST" enctype="multipart/form-data" name="website_form">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="form-row">
+        <div class="form-group col-md-6 offset-md-3">
+          <label class="text-dark" for="{{field.id_for_label}}">{{field.label}}</label>
+          <!-- <input class="form-control py-4" name="{{field.name}}" autocomplete="{{field.autocomplete}}" maxlength="{{field.max_length}}"  id="inputName" type="text" placeholder="{{field.help_text}}" /> -->
+          {{field|add_class:"form-control py-4"}}
+          {% if field.errors %}
+            <ul class='mt-2'>
+            {% for error in field.errors %}
+                <li class='small'>{{ error|escape }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+      </div>
+      {% endfor %}
+      <!-- <div class="form-row">
+          <div class="form-group col-md-6 offset-md-3"><label class="text-dark" for="inputEmail">Password</label>
+            <input class="form-control py-4" id="inputEmail" type="email" placeholder="Password" />
+          </div>
+        </div> -->
+
+      <div class="text-center mb-5">
+        <button class="btn btn-primary btn-marketing mt-4" type="submit">Sign Up</button>
+      </div>
+
+<!-- <div class="">
+  {% if form.field.errors %}
+    <ol>
+    {% for error in form.field.errors %}
+        <li><strong>{{ error|escape }}</strong></li>
+    {% endfor %}
+    </ol>
+{% endif %}
+
+</div> -->
+
+
+    </form>
+
+
+
+
+
+
+  </div>
+</section>
+
+
+
+
+{% include 'homepage/footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+
+<div class="row">
+
+{% for tag in toptags%}
+
+    <div class="col-lg-4 mb-5">
+        <h6>{{tag.name}}</h6>
+        <hr class="my-4" />
+        {% for article in tag.article_set.all|slice:":3" %}
+        <a class="text-dark mb-4" href="{% url 'get_blog_article_slug' article.slug %}">
+          <h6>{{article.title}}</h6>
+            <p class="text-gray-600 small mb-4">
+              {{article.content|safe|truncatewords:18}}
+            </p>
+        </a>
+        {% endfor %}
+
+        <a class="text-arrow-icon small" href="{% url 'get_blog_tag_slug' tag.slug %}">More from {{tag.name}}<i data-feather="arrow-right"></i></a>
+    </div>
+
+{% endfor %}
+
+
+
+</div>

@@ -1,0 +1,126 @@
+{%extends 'homepage/base.html'%}
+
+
+{%block body%}
+
+<!--
+{% load static %}
+{% static "homepage/img/images/11.jpeg" as mainpic %} -->
+
+{% include 'homepage/navbar.html' %}
+
+<header class="page-header page-header-dark bg-img-cover overlay overlay-60" style='background-image: url("https://www.badyogi.com/blog/wp-content/uploads/2020/03/My-COVID-19-Lockdown-Reading-List.png")'>
+  <div class="page-header-content py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10 text-center">
+          <div data-aos="fade-up">
+            <br/>
+            <h1 class="page-header-title">Reading List</h1>
+
+          </div>
+      <!-- <a class="btn btn-marketing rounded-pill mybtn button" data-aos="fade-up" data-aos-delay="100" href="{% url 'contact' %}">Invite Me</a> -->
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  {% include 'homepage/roundbottom.html' %}
+</header>
+
+<!-- <header class="page-header page-header-dark bg-img-cover overlay overlay-80" style='background-image: url("https://source.unsplash.com/faEfWCdOKIg/1500x900")'>
+  <div class="page-header-content py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10 text-center">
+          <div data-aos="fade-up">
+            <h1 class="page-header-title">We are a branding and design studio</h1>
+            <p class="page-header-text">We are a group of creatives and developers who design, build, and optimize brands and digital experiences.</p>
+          </div>
+          <button class="btn btn-marketing rounded-pill btn-primary" data-aos="fade-up" data-aos-delay="100">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="svg-border-rounded text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor">
+      <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+    </svg>
+  </div>
+</header> -->
+
+<section id="publicspeakingevents" class="bg-white py-10">
+  <div class="container my-card-hover">
+
+    <div class="text-uppercase-expanded  mb-2">Books I've Read</div>
+    <hr class="mt-0 mb-5" />
+
+
+
+    <div class="accordion accordion-faq mb-5" id="authAccordion">
+      {% for book in books%}
+      <div class="card accordion-faq-item">
+        <a class="card-header" id="authHeading-{{forloop.counter}}" data-toggle="collapse" data-target="#authCollapse-{{forloop.counter}}" aria-expanded="true" aria-controls="authCollapseOne" href="javascript:void(0);">
+          <div class="accordion-faq-item-heading">
+            <div class="container">
+
+              <div class="row">
+
+                <div class="col">
+                  <div class="row">
+                    {{book.title}}
+                  </div>
+                  <div class="row text-gray-900">
+
+                    <div class="stars" style="--rating: {{book.rating}};" aria-label="">★★★★★</div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <i class="accordion-faq-item-heading-arrow" data-feather="chevron-down"></i>
+          </div>
+        </a>
+
+
+        <div class="collapse collapsed" id="authCollapse-{{forloop.counter}}" aria-labelledby="authHeading-{{forloop.counter}}" data-parent="#authAccordion">
+          <div class="card-body border-bottom">
+            <div class="container">
+
+              <div class="row">
+                <div class="col-md-4 col-lg-3">
+                    <img class=" img-fluid bookimage" src="{{book.imageurl }}" />
+
+                </div>
+                <div class="col-md-8 col-lg-9 mt-3">
+                  <p class="">
+                    {{book.description|safe}}
+                  </p>
+
+                </div>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+  {% include 'homepage/slantbottom.html' %}
+</section>
+
+
+
+
+{% include 'homepage/footer.html' %}
+
+{% endblock %}

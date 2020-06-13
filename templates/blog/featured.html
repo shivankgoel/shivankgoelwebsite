@@ -1,0 +1,25 @@
+<div class="d-flex align-items-center justify-content-between">
+    <h6 class="mb-0">Featured Story</h6>
+</div>
+<hr class="mb-4" />
+<div class="card mb-4">
+    <div class="card-body p-0">
+        <div class="row no-gutters">
+            <div class="col-lg-6 p-5">
+              {% for tag in object.tags.all %}
+                <a class="badge badge-marketing badge-primary-soft badge-pill text-primary mb-3" href="{% url 'get_blog_tag_slug' slug=tag.slug %}">
+                  {{tag.name}}
+                </a>
+                  {% endfor %}
+                <a class="text-dark" href="{% url 'get_blog_article_slug' slug=object.slug %}">
+                  <h1>{{object.title}}</h1>
+                </a>
+                <p>
+                  {{object.content|safe|truncatewords:30}}
+                </p>
+                <a class="text-arrow-icon small" href="{% url 'get_blog_article_slug' slug=object.slug %}">Read more<i data-feather="arrow-right"></i></a>
+            </div>
+            <div class="col-lg-6 align-self-stretch bg-img-cover d-none d-lg-flex" style='background-image: url({{object.imageurl}})'></div>
+        </div>
+    </div>
+</div>

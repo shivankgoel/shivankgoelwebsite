@@ -1,0 +1,48 @@
+{%extends 'homepage/base.html'%}
+
+
+{%block body%}
+
+
+{% include 'homepage/navbar.html' %}
+
+<section class="bg-light py-5">
+
+<div class="container">
+  {% include 'blog/featured.html' with object=top_article %}
+
+  <div class="row">
+
+    <div class="col-lg-7 col-xl-8">
+      {% include 'blog/basic.html' with articles=latest_articles  title="Top Stories" %}
+    </div>
+    <div class="col-lg-5 col-xl-4">
+      {% include 'blog/blogsidebar.html' with tags=tags %}
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="container">
+  {% include 'blog/blogcategories.html' with toptags=toptags %}
+
+
+</div>
+
+
+
+  <div class="svg-border-rounded text-dark">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor">
+      <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+    </svg>
+  </div>
+
+</section>
+
+{% include 'homepage/footer.html' %}
+
+{% endblock %}

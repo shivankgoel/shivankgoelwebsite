@@ -1,0 +1,6 @@
+djangoenv/
+db.sqlite3
+__pychahe__/
+Staticfiles/
+.vscode/
+.env

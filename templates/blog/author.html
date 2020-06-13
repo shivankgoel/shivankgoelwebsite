@@ -1,0 +1,44 @@
+{%extends 'homepage/base.html'%}
+
+
+{%block body%}
+
+<!-- {% load static %}
+{% static "homepage/img/images/tpc.png" as mainpic %} -->
+
+{% include 'homepage/navbar.html' %}
+
+<header class="page-header page-header-light bg-white">
+                    <div class="page-header-content">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-8 col-lg-10 text-center">
+                                    <!-- <img class="mb-4" src="assets/img/avataaars.svg" style="width: 15rem;" /> -->
+                                    <h1 class="page-header-title">{{object.name}}</h1>
+                                    <p class="page-header-text">
+                                    These are the blogs written by me.
+                                    </p>
+                                    <ul>
+                                      {% for article in object.article_set.all%}
+                                      <li>
+                                        <a href ="{% url 'get_blog_article_slug' slug=article.slug %} ">
+                                          {{article}}
+                                        </a>
+                                        </li>
+                                      {% endfor %}
+                                      </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svg-border-rounded text-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
+                    </div>
+                </header>
+
+
+
+
+  {% include 'homepage/footer.html' %}
+
+  {% endblock %}

@@ -1,0 +1,24 @@
+<div class="card mb-5 mt-5">
+  <div class="card-body">
+    <h6>Tags</h6>
+    <hr />
+
+    {%for tag in tags%}
+    {% if tag.a_count %}
+    <div class="d-flex mb-4">
+      <div class="avatar avatar-lg"><img class="avatar-img img-fluid single-post-meta-img blog_main_image" src="{{tag.imageurl}}" /></div>
+      <div class="ml-3">
+        <a class="text-dark" href="{% url 'get_blog_tag_slug' tag.slug %}">
+          <h6 class="mb-1">{{tag.name}}</h6>
+        </a>
+        <div class="small text-gray-500">{{tag.a_count}} Articles</div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+
+
+
+  </div>
+</div>

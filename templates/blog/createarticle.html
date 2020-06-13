@@ -1,0 +1,63 @@
+{% extends 'blog/base.html' %}
+
+{% block body %}
+
+<header class="page-header page-header-dark bg-img-cover overlay overlay-80 mb-5" style='background-image: url("https://source.unsplash.com/faEfWCdOKIg/1500x900")'>
+                       <div class="page-header-content py-5">
+                           <div class="container">
+                               <div class="row justify-content-center">
+                                   <div class="col-xl-8 col-lg-10 text-center">
+                                       <div data-aos="fade-up">
+                                           <h1 class="page-header-title">Create New Article</h1>
+                                           </div>
+<!--                                        <button class="btn btn-marketing rounded-pill btn-primary" data-aos="fade-up" data-aos-delay="100">Learn More</button>-->
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="svg-border-rounded text-white">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
+                       </div>
+                   </header>
+
+
+<div class="container">
+
+  {% if success %}
+    <p>Form Submitted Successfully</p>
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+              <!-- <div class="form-row">
+                  <div class="form-group col-md-6"><label class="text-dark" for="inputName">Full name</label><input class="form-control py-4" id="inputName" type="text" placeholder="Full name" /></div>
+                  <div class="form-group col-md-6"><label class="text-dark" for="inputEmail">Email</label><input class="form-control py-4" id="inputEmail" type="email" placeholder="name@example.com" /></div>
+              </div> -->
+              <div class="form-group">
+                <label class="text-dark" for="articleTitle">Article Title</label>
+                <input class="form-control py-4" id="articleTitle" type="text" placeholder="Title" name="title" />
+              </div>
+              <div class="form-group">
+                <label class="text-dark" for="inputMessage">Article Content</label>
+                <textarea class="form-control py-3" id="inputMessage" type="text" placeholder="Enter your blog content..." rows="4" name="content"></textarea>
+              </div>
+              <div class="form-group">
+    <label for="exampleFormControlSelect1">Select Authors</label>
+    <select multiple class="form-control" id="exampleFormControlSelect1" name="authors">
+      {% for author in authors %}
+      <option value="{{author.pk}}"> {{author.name}}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+              <div class="text-center"><button class="btn btn-primary btn-marketing mt-4" type="submit">Submit Article</button></div>
+          </form>
+
+
+</div>
+
+
+
+
+
+{% endblock %}
