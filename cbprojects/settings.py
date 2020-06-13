@@ -28,13 +28,13 @@ SECRET_KEY = config('SECRET_KEY', default = '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=True)
 
-
+print(DEBUG)
 
 ALLOWED_HOSTS = [
     host.strip()
-    for host in config('ALLOWED_HOSTS', default='').split(',')
-
+    for host in config('ALLOWED_HOSTS', default='*').split(',')
 ]
+
 
 
 # Application definition

@@ -20,8 +20,9 @@ def get_recent_ids(next_page_token = ''):
 def get_recent_ids_all():
 	ids  = []
 	r = get_recent_ids()
-	for item in r['items']:
-		ids.append(item['contentDetails']['videoId'])
+	if 'items' in r:
+		for item in r['items']:
+			ids.append(item['contentDetails']['videoId'])
 	while 'nextPageToken' in r:
 		r = get_recent_ids(r['nextPageToken'])
 		for item in r['items']:
