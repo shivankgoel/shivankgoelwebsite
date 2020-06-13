@@ -5,3 +5,10 @@ Staticfiles/
 .vscode/
 .env
 shivankgoel_com_key.txt
+*.log
+Certificates/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
