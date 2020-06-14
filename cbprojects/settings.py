@@ -213,4 +213,4 @@ LOGGING = {
 }
 
 
-django_heroku.settings(locals(), allowed_hosts=False)
+django_heroku.settings(locals(), allowed_hosts=False, logging=False)
