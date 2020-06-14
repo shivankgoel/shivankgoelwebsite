@@ -37,7 +37,6 @@ ALLOWED_HOSTS = [
     for host in config('ALLOWED_HOSTS', default='*').split(',')
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -214,4 +213,4 @@ SOCIALACCOUNT_PROVIDERS = {
 # }
 
 
-django_heroku.settings(locals())
+django_heroku.settings(locals(), allowed_hosts=False)
