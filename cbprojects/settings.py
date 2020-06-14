@@ -93,14 +93,14 @@ WSGI_APPLICATION = 'cbprojects.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if DEBUG or config('ONAWS' , default = 'False'):
+if config('ONAWS' , default = 'False') or config('LOCAL' , default = 'False'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-else:
+else: #on heroku
     DATABASES = {
         'default': dj_database_url.config(default=config('DATABASE_URL'))
     }
