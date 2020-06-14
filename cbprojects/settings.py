@@ -17,9 +17,9 @@ import dj_database_url
 
 import django_heroku
 
-#from whitenoise.storage import CompressedManifestStaticFilesStorage
-# class WhiteNoiseStaticFilesStorage(CompressedManifestStaticFilesStorage):
-#     manifest_strict = False
+from whitenoise.storage import CompressedManifestStaticFilesStorage
+class WhiteNoiseStaticFilesStorage(CompressedManifestStaticFilesStorage):
+    manifest_strict = False
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
