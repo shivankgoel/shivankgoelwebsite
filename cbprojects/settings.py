@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'cbprojects.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if DEBUG or config('ONAWS' , default = 'True'):
+if DEBUG or config('ONAWS' , default = 'False'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

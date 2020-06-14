@@ -5,6 +5,11 @@ __pychahe__/
 shivankgoel_com_key.txt
 *.log
 Certificates/
+staticfiles/
+db.sqlite3
+reference.txt
+.gitignore
+
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
