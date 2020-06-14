@@ -1,4 +1,5 @@
 
+{% load static %}
 
 <!doctype html>
 <html lang="en">
@@ -31,7 +32,7 @@
          <script async src="//www.instagram.com/embed.js"></script>
          <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
         {% load static %}
-        <link rel="icon" type="image/x-icon" href="{%static "homepage/img/favicon.png" %}" />
+        <link rel="icon" type="image/x-icon" href="{% static "homepage/img/favicon.png" %}" />
         <script src="{% static "homepage/js/scripts.js" %}"></script>
         <link href="{% static "homepage/css/styles.css" %}" rel="stylesheet" />
         <link href="{%static "homepage/css/mystyle.css" %}"  rel="stylesheet" />
