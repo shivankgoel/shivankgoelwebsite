@@ -106,6 +106,13 @@ def contact(request):
 	response = render(request, 'homepage/contact.html', context)
 	return response
 
+def calendar(request):
+	context = {
+	}
+	response = render(request, 'homepage/calendar.html', context)
+	return response
+
+
 def reading(request):
 	books = models.Book.objects.all().order_by('-rating')
 	context = {

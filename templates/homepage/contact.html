@@ -9,7 +9,7 @@
 
 {% include 'homepage/navbar.html' %}
 
-<header class="page-header page-header-dark bg-gradient-primary-to-secondary">
+<header class="page-header page-header-dark bg-img-cover overlay overlay-50" style='background-image: url("https://cdn.pixabay.com/photo/2020/04/03/21/59/at-home-5000290_1280.jpg")'>
   <div class="page-header-content pt-10">
     <div class="container text-center">
       <div class="row justify-content-center">
@@ -26,6 +26,8 @@
     </svg>
   </div>
 </header>
+
+
 
 
 
@@ -62,12 +64,13 @@
     </form>
 
   </div>
-  <div class="svg-border-rounded text-dark">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor">
-      <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
-    </svg>
-  </div>
+
 </section>
+
+
+{% include 'homepage/calendar.html' %}
+
+
 
 
 {% include 'homepage/footer.html' %}
