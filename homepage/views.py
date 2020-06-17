@@ -58,7 +58,6 @@ def index(request):
 	latest_articles = articles[0:3]
 	context = {
 	 'playlist_ids' : get_recent_ids_all(),
-	#'shortcodes' : get_insta_posts_all(),
 	'jobs' : get_timeline(),
 	'teachingjobs' : get_ta_experience(),
 	'cornellresearch' : get_cornell_research(),

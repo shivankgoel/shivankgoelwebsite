@@ -1,13 +1,18 @@
  <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+
    <div class="container">
+
      <a class="navbar-brand text-dark" href="{% url 'index' %}">
        Shivank Goel
      </a>
 
 
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
 
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
        <ul class="navbar-nav ml-auto mr-lg-5">
 
 
@@ -15,59 +20,28 @@
          <!-- <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#homepage_timeline">Timeline </a></li> -->
 
          <li class="nav-item dropdown no-caret">
-           <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Me<i class="fas fa-chevron-right dropdown-arrow"></i></a>
-           <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+           <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Me<i class="fas fa-chevron-right dropdown-arrow"></i></a>
+           <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="navbarDropdown1">
 
              <a class="dropdown-item my-py-3" href="{% url 'index' %}#homepage_timeline" target="_self">
                <div class="icon-stack my-bg-primary-soft my-text-primary mr-4"><i class="fas fa-graduation-cap"></i></div>
-               <div>
-
-                 Timeline
-               </div>
+               <div> Timeline </div>
              </a>
+
              <div class="dropdown-divider m-0"></div>
 
              <a class="dropdown-item my-py-3" href="{% url 'reading' %}" target="_self">
                <div class="icon-stack my-bg-primary-soft my-text-primary mr-4"><i class="fas fa-book"></i></div>
-               <div>
-
-                 Reading
-               </div>
+               <div> Reading </div>
              </a>
 
            </div>
          </li>
 
-
-         <!--                                    <li class="nav-item dropdown dropdown-lg no-caret">-->
-         <!--                                        <a class="nav-link dropdown-toggle" id="navbarDropdownPages" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages<i class="fas fa-chevron-right dropdown-arrow"></i></a>-->
-         <!--                                        <div class="dropdown-menu dropdown-menu-right animated&#45;&#45;fade-in-up" aria-labelledby="navbarDropdownPages">-->
-         <!--                                            <div class="row no-gutters">-->
-         <!--                                                <div class="col-lg-6 p-lg-5">-->
-         <!--                                                    <h6 class="dropdown-header text-primary">Company</h6>-->
-         <!--                                                    <a class="dropdown-item" href="page-basic.html">Basic Page</a><a class="dropdown-item" href="page-company-about.html">About</a><a class="dropdown-item" href="page-company-pricing.html">Pricing</a><a class="dropdown-item" href="page-company-contact.html">Contact</a><a class="dropdown-item" href="page-company-terms.html">Terms</a>-->
-         <!--                                                    <div class="dropdown-divider border-0"></div>-->
-         <!--                                                    <h6 class="dropdown-header text-primary">Support</h6>-->
-         <!--                                                    <a class="dropdown-item" href="page-help-center.html">Help Center</a><a class="dropdown-item" href="page-help-knowledgebase.html">Knowledgebase</a><a class="dropdown-item" href="page-help-message-center.html">Message Center</a><a class="dropdown-item" href="page-help-support-ticket.html">Support Ticket</a>-->
-         <!--                                                    <div class="dropdown-divider border-0 d-lg-none"></div>-->
-         <!--                                                </div>-->
-         <!--                                                <div class="col-lg-6 p-lg-5">-->
-         <!--                                                    <h6 class="dropdown-header text-primary">Careers</h6>-->
-         <!--                                                    <a class="dropdown-item" href="page-careers-overview.html">Careers List</a><a class="dropdown-item" href="page-careers-listing.html">Position Details</a>-->
-         <!--                                                    <div class="dropdown-divider border-0"></div>-->
-         <!--                                                    <h6 class="dropdown-header text-primary">Blog</h6>-->
-         <!--                                                    <a class="dropdown-item" href="page-blog-overview.html">Overview</a><a class="dropdown-item" href="page-blog-post.html">Post</a><a class="dropdown-item" href="page-blog-archive.html">Archive</a>-->
-         <!--                                                    <div class="dropdown-divider border-0"></div>-->
-         <!--                                                    <h6 class="dropdown-header text-primary">Portfolio</h6>-->
-         <!--                                                    <a class="dropdown-item" href="page-portfolio-grid.html">Grid</a><a class="dropdown-item" href="page-portfolio-large-grid.html">Large Grid</a><a class="dropdown-item" href="page-portfolio-masonry.html">Masonry</a><a class="dropdown-item" href="page-portfolio-case-study.html">Case Study</a><a class="dropdown-item" href="page-portfolio-project.html">Project</a>-->
-         <!--                                                </div>-->
-         <!--                                            </div>-->
-         <!--                                                                                    </div>-->
-         <!--                                    </li>-->
-
          <li class="nav-item dropdown no-caret">
-           <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tech Interviews<i class="fas fa-chevron-right dropdown-arrow"></i></a>
-           <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+           <a class="nav-link dropdown-toggle" id="navbarDropdown2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tech Interviews<i class="fas fa-chevron-right dropdown-arrow"></i></a>
+           <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="navbarDropdown2">
+
              <a class="dropdown-item my-py-3" href="{% url 'index' %}#data_science_course" target="_self">
                <div class="icon-stack my-bg-primary-soft my-text-primary mr-4"><i class="fas fa-chart-bar"></i></div>
                <div>
@@ -75,7 +49,9 @@
                  My course on Udemy
                </div>
              </a>
+
              <div class="dropdown-divider m-0"></div>
+
              <a class="dropdown-item my-py-3" href="{% url 'index' %}#youtubecoding" target="_self">
                <div class="icon-stack my-bg-primary-soft my-text-primary mr-4"><i class="fas fa-code"></i></div>
                <div>
@@ -83,13 +59,14 @@
                  Coding tutorials on YouTube
                </div>
              </a>
+
            </div>
          </li>
 
 
          <li class="nav-item dropdown no-caret">
-           <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Talk Events<i class="fas fa-chevron-right dropdown-arrow"></i></a>
-           <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+           <a class="nav-link dropdown-toggle" id="navbarDropdown3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Talk Events<i class="fas fa-chevron-right dropdown-arrow"></i></a>
+           <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="navbarDropdown3">
              <a class="dropdown-item my-py-3" href="{% url 'tech_pe_charcha' %}" target="_self">
                <div class="icon-stack my-bg-primary-soft my-text-primary mr-4"><i class="fas fa-handshake"></i></div>
                <div>
@@ -101,7 +78,7 @@
              <a class="dropdown-item my-py-3" href="{% url 'publicspeaking' %}" target="_self">
                <div class="icon-stack my-bg-primary-soft my-text-primary mr-4"><i class="fas fa-microphone"></i></div>
                <div>
-                 <div class="small text-gray-500">Invite me  to speak</div>
+                 <div class="small text-gray-500">Invite me to speak</div>
                  Some of the events where I spoke
                </div>
              </a>
@@ -109,17 +86,16 @@
            </div>
          </li>
 
-          <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+         <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
          <li class="nav-item"><a class="nav-link" href="{% url 'blogindex' %}">Blog</a></li>
 
          {% if request.user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}?next={{request.path}}">Logout</a></li>
-          {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}?next={{request.path}}">Login</a></li>
-          {% endif %}
+         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}?next={{request.path}}">Logout</a></li>
+         {% else %}
+         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}?next={{request.path}}">Login</a></li>
+         {% endif %}
 
-          <!-- <li class="nav-item"><a class="nav-link" href="{% url 'reading' %}">Reading</a></li> -->
-
+    
 
        </ul>
 

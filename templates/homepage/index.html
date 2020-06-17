@@ -4,10 +4,11 @@
 {%block body%}
 
 
+{% include 'homepage/navbar.html' %}
+
+
 {% load static %}
 {% static "homepage/img/images/6.jpg" as mainpic %}
-
-{% include 'homepage/navbar.html' %}
 
 <header class="page-header page-header-dark bg-img-cover overlay overlay-60" style='background-image: url("{{mainpic}}")'>
   <div class="page-header-content py-15">
@@ -258,7 +259,7 @@
 
 </section>
 
-{% include 'homepage/calendar.html' %}
+{% include 'homepage/calendarbase.html' %}
 
 
 <!-- Calendly inline widget end -->
@@ -291,6 +292,7 @@
   </div>
 
 </section> -->
+
 
 
 {% include 'homepage/footer.html' %}

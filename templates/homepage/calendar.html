@@ -1,30 +1,19 @@
-
 {%extends 'homepage/base.html'%}
 
 
 {%block body%}
 
 
-
-
-<section id='calendar' class="bg-white py-5">
-
-
-  <div class="container">
-    <div class="text-uppercase-expanded mb-2">Book My Calendar</div>
-    <hr class="mt-0 mb-5" />
-
-    <div class="calendly-inline-widget" data-url="https://calendly.com/goelshivank12?hide_landing_page_details=1&primary_color=333335" style="min-width:320px;height:630px;"></div>
-
-
-  </div>
-
-  {% include 'homepage/slantbottom.html' with color='light' %}
-
-</section>
+{% include 'homepage/navbar.html' %}
 
 
 
 
+{% include 'homepage/calendarbase.html' %}
+
+
+
+
+{% include 'homepage/footer.html' %}
 
 {% endblock %}
