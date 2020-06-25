@@ -23,17 +23,18 @@
 
           <div class="d-flex align-items-center justify-content-between">
             <div class="single-post-meta mr-4">
-              <img class="img-fluid single-post-meta-img blog_main_image" src="{% static "homepage/img/images/4.jpg" %}" />
+              <img class="img-fluid single-post-meta-img blog_main_image" src="{{ object.mainauthor.imageurl }}" />
               <div class="single-post-meta-details">
                 <div class="single-post-meta-details-name">
-                  {% for author in object.authors.all %}
+                  <a href="{% url 'get_blog_author_slug' slug=object.mainauthor.slug %}">
+                    {{object.mainauthor}}
+                  </a>
+                  {% for author in object.other_authors.all %}
+                  ,
                   <a href="{% url 'get_blog_author_slug' slug=author.slug %}">
                     {{author}}
                   </a>
 
-                  {% if author != object.authors.last %}
-                  <span>,</span>
-                  {% endif %}
                   {% endfor %}
                 </div>
                 <div class="single-post-meta-details-date">{{object.createdAt}}</div>

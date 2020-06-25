@@ -76,6 +76,17 @@ font-family: 'Montserrat', sans-serif;
     color: white;
 }
 
+.header-social-icons-author .mysocialicon{
+    font-size: 1.5rem; !important;
+    margin: 0.5rem;
+    color:  #485260;
+}
+
+.header-social-icons-author{
+  margin: 0px auto;
+  display: inline-block
+}
+
 .my-img-left{
     height: 270px;
     width: 420px;

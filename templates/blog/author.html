@@ -8,37 +8,116 @@
 
 {% include 'homepage/navbar.html' %}
 
+
 <header class="page-header page-header-light bg-white">
-                    <div class="page-header-content">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-xl-8 col-lg-10 text-center">
-                                    <!-- <img class="mb-4" src="assets/img/avataaars.svg" style="width: 15rem;" /> -->
-                                    <h1 class="page-header-title">{{object.name}}</h1>
-                                    <p class="page-header-text">
-                                    These are the blogs written by me.
-                                    </p>
-                                    <ul>
-                                      {% for article in object.article_set.all%}
-                                      <li>
-                                        <a href ="{% url 'get_blog_article_slug' slug=article.slug %} ">
-                                          {{article}}
-                                        </a>
-                                        </li>
-                                      {% endfor %}
-                                      </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="svg-border-rounded text-light">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
-                    </div>
-                </header>
+  <div class="page-header-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10 text-center">
+          <!-- <img class="mb-4 overlay-60" src="{{object.imageurl}}" style="width: 10rem; border-radius:100%;" /> -->
+          <h1 class="page-header-title">{{object.name}}</h1>
+          <p class="page-header-text">Find the collection of my blog posts here.</p>
+
+              <div class="header-social-icons-author">
+                <div class="icon-list-social mb-5">
+                  {% if object.linkedin_url|length > 0 %}
+                    <a class="icon-list-social-link" href="{{object.linkedin_url}}" target="_blank">
+                      <i class="fab fa-linkedin mysocialicon"></i>
+                  </a>
+                  {% endif %}
+
+                    {% if object.instagram_url|length > 0 %}
+
+                  <a class="icon-list-social-link" href="{{object.instagram_url}}" target="_blank">
+                      <i class="fab fa-instagram mysocialicon"></i>
+                  </a>
+                  {% endif %}
+
+                    {% if object.facebook_url|length > 0 %}
+                  <a class="icon-list-social-link" href="{{object.facebook_url}}" target="_blank">
+                      <i class="fab fa-facebook mysocialicon"></i>
+                  </a>
+                  {% endif %}
+
+              </div>
+
+          </div>
+
+
+        </div>
+      </div>
 
 
 
+    </div>
+  </div>
 
-  {% include 'homepage/footer.html' %}
+  <div class="svg-border-rounded text-light">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor">
+      <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+    </svg>
+  </div>
+</header>
 
-  {% endblock %}
+
+<section class="bg-light py-10">
+  <div class="container">
+    <h2 class="mb-4">Recent blogs</h2>
+    <div class="row">
+
+      {% for article in object.primary_articles.all %}
+
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+
+        <a class="card lift h-100" href="{% url 'get_blog_article_slug' slug=article.slug %}">
+
+
+          <!-- <div class="card-flag card-flag-dark card-flag-top-right card-flag-lg">$115</div> -->
+          <img class="card-img-top" src="{{article.imageurl}}" alt="..." />
+          <div class="card-body p-3">
+            <div class="card-title small mb-0"> {{article}}</div>
+            <div class="text-xs text-gray-500">{{article.createdAt}}</div>
+          </div>
+
+
+        </a>
+
+      </div>
+
+      {% endfor %}
+
+
+      {% for article in object.other_articles.all %}
+
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+
+        <a class="card lift h-100" href="{% url 'get_blog_article_slug' slug=article.slug %}">
+
+
+          <!-- <div class="card-flag card-flag-dark card-flag-top-right card-flag-lg">$115</div> -->
+          <img class="card-img-top" src="{{article.imageurl}}" alt="..." />
+          <div class="card-body p-3">
+            <div class="card-title small mb-0"> {{article}}</div>
+            <div class="text-xs text-gray-500">{{article.createdAt}}</div>
+          </div>
+
+
+        </a>
+
+      </div>
+
+      {% endfor %}
+
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+{% include 'homepage/footer.html' %}
+
+{% endblock %}
