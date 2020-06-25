@@ -49,6 +49,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'django_summernote',
     'blog',
     'homepage',
     'widget_tweaks',
@@ -219,6 +220,11 @@ SOCIALACCOUNT_PROVIDERS = {
 #         },
 #     }
 # }
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 django_heroku.settings(locals(), allowed_hosts=False, logging=False)
