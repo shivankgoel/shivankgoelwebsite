@@ -39,3 +39,11 @@ class Book(models.Model):
     rating = models.DecimalField(decimal_places=1, max_digits = 3, validators=[MinValueValidator(1), MaxValueValidator(5)])
     def __str__(self):
         return self.title
+
+
+class YoutubeLinks(models.Model):
+    createdAt = models.DateTimeField(auto_now_add = True)
+    title = models.CharField(max_length = 256, blank = True)
+    youtubelink = models.CharField(max_length = 256)
+    def __str__(self):
+        return self.title

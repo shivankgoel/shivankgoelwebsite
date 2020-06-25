@@ -7,4 +7,5 @@ admin.site.register([
     models.TechPeCharchaEpisodes,
     models.PublicSpeakingEvents,
     models.Book,
+    models.YoutubeLinks,
 ])

@@ -7,48 +7,52 @@ from homepage import models
 from blog import models as blog_models
 from django.db.models import Count
 
-def get_recent_ids(next_page_token = ''):
-	myparams = {
-	'key' : 'AIzaSyCODNQTCCNjEOQD4rq6Wrsm6yutO_oCx5M',
-	'part' : 'contentDetails,id',
-	'pageToken' : next_page_token,
-	'playlistId' : 'PLK5n_RNeFvWTkq1YNFGZIYuhUuqvFW6LY'
-	}
-	r = requests.get('https://www.googleapis.com/youtube/v3/playlistItems', params = myparams)
-	return json.loads(r.text)
+# def get_recent_ids(next_page_token = ''):
+# 	myparams = {
+# 	'key' : 'AIzaSyCODNQTCCNjEOQD4rq6Wrsm6yutO_oCx5M',
+# 	'part' : 'contentDetails,id',
+# 	'pageToken' : next_page_token,
+# 	'playlistId' : 'PLK5n_RNeFvWTkq1YNFGZIYuhUuqvFW6LY'
+# 	}
+# 	r = requests.get('https://www.googleapis.com/youtube/v3/playlistItems', params = myparams)
+# 	return json.loads(r.text)
+#
+# def get_recent_ids_all():
+# 	ids  = []
+# 	r = get_recent_ids()
+# 	if 'items' in r:
+# 		for item in r['items']:
+# 			ids.append(item['contentDetails']['videoId'])
+# 	while 'nextPageToken' in r:
+# 		r = get_recent_ids(r['nextPageToken'])
+# 		for item in r['items']:
+# 			ids.append(item['contentDetails']['videoId'])
+# 	ids.reverse()
+# 	return ids[:3]
+#
+#
+# def get_insta_posts(uname):
+# 	r = requests.get('https://www.instagram.com/'+uname+'/?__a=1')
+# 	obj = json.loads(r.text)
+# 	shortcodes = []
+# 	for x in obj['graphql']['user']['edge_owner_to_timeline_media']['edges']:
+# 		if len(shortcodes) >= 5:
+# 			break
+# 		shortcodes.append(x['node']['shortcode'])
+# 	return shortcodes
+#
+# def get_insta_posts_all():
+# 	s1 = get_insta_posts('techlife_with_shivank')
+# 	s2 = get_insta_posts('goel.sh')
+# 	s = []
+# 	for i in range(len(s1)):
+# 		s.append(s1[i])
+# 		s.append(s2[i])
+# 	return s
 
-def get_recent_ids_all():
-	ids  = []
-	r = get_recent_ids()
-	if 'items' in r:
-		for item in r['items']:
-			ids.append(item['contentDetails']['videoId'])
-	while 'nextPageToken' in r:
-		r = get_recent_ids(r['nextPageToken'])
-		for item in r['items']:
-			ids.append(item['contentDetails']['videoId'])
-	ids.reverse()
-	return ids[:3]
 
-
-def get_insta_posts(uname):
-	r = requests.get('https://www.instagram.com/'+uname+'/?__a=1')
-	obj = json.loads(r.text)
-	shortcodes = []
-	for x in obj['graphql']['user']['edge_owner_to_timeline_media']['edges']:
-		if len(shortcodes) >= 5:
-			break
-		shortcodes.append(x['node']['shortcode'])
-	return shortcodes
-
-def get_insta_posts_all():
-	s1 = get_insta_posts('techlife_with_shivank')
-	s2 = get_insta_posts('goel.sh')
-	s = []
-	for i in range(len(s1)):
-		s.append(s1[i])
-		s.append(s2[i])
-	return s
+def get_youtube_ids():
+	return models.YoutubeLinks.objects.all().order_by('-createdAt')
 
 
 # Create your views here.
@@ -57,7 +61,7 @@ def index(request):
 	tags = blog_models.Tag.objects.all().annotate(a_count=Count('article')).order_by('-a_count')
 	latest_articles = articles[0:3]
 	context = {
-	 'playlist_ids' : get_recent_ids_all(),
+	 'playlist_ids' : get_youtube_ids(),
 	'jobs' : get_timeline(),
 	'teachingjobs' : get_ta_experience(),
 	'cornellresearch' : get_cornell_research(),

@@ -213,7 +213,7 @@
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="4000">
       <div class="carousel-inner">
-        {% for video_id in playlist_ids %}
+        {% for video in playlist_ids %}
 
         {% if forloop.first %}
         <div class="carousel-item active">
@@ -222,7 +222,7 @@
             {% endif %}
             <div class="myvideopadding">
               <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{video_id}}?rel=0" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{video.youtubelink}}?rel=0" allowfullscreen></iframe>
               </div>
 
             </div>
