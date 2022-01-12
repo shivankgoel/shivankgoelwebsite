@@ -37,7 +37,7 @@ jsonschema==3.2.0
 oauthlib==3.1.0
 paramiko==2.7.1
 pathspec==0.5.9
-pipenv==2020.6.2
+pipenv==2022.1.8
 psycopg2==2.7.5
 psycopg2-binary==2.8.5
 pyasn1==0.4.8
