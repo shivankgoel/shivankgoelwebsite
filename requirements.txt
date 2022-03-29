@@ -35,7 +35,7 @@ importlib-metadata==1.6.1
 jmespath==0.10.0
 jsonschema==3.2.0
 oauthlib==3.1.0
-paramiko==2.7.1
+paramiko==2.10.1
 pathspec==0.5.9
 pipenv==2020.6.2
 psycopg2==2.7.5
